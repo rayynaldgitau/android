@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.raynaldgitaz.augustmidmorningnavigationapp.data.AuthRepository
 import com.raynaldgitaz.augustmidmorningnavigationapp.navigation.ROUTE_LOGIN
 import com.raynaldgitaz.augustmidmorningnavigationapp.navigation.ROUTE_SIGNUP
 import com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.AugustMidMorningNavigationAppTheme
@@ -36,6 +38,7 @@ import com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.AugustMidMorningN
 fun SignupScreen(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
+        var context = LocalContext.current
         Text(text = "Register here",
             color = Color.Red,
             fontSize = 30.sp,
@@ -72,6 +75,8 @@ fun SignupScreen(navController: NavHostController) {
 
         Button(onClick = {
             // ------WRITE SIGNUP LOGIC HERE------//
+            var authRepository = AuthRepository(navController, context)
+            authRepository.signup(name.text.trim(),email.text.trim(),password.text.trim())
         }) {
             Text(text = "Signup")
         }

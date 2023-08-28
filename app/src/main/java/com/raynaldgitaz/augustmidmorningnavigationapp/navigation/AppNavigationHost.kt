@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.pages.about.AboutScreen
 import com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.pages.home.HomeScreen
 import com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.pages.login.LoginScreen
+import com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.pages.products.AddProductsScreen
 import com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.pages.signup.SignupScreen
 
 @Composable
@@ -33,5 +34,12 @@ fun AppNavigationHost (modifier: Modifier = Modifier,
         composable(ROUTE_ABOUT){
             AboutScreen(navController)
         }
+        composable(ROUTE_ADD_PRODUCTS){
+            AddProductsScreen(navController)
+        }
+        composable(ROUTE_VIEW_PRODUCTS){
+
+        }
+
     }
 }

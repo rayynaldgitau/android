@@ -1,4 +1,4 @@
-package com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.pages.login
+package com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.pages.products
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -28,67 +28,75 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.raynaldgitaz.augustmidmorningnavigationapp.data.AuthRepository
-import com.raynaldgitaz.augustmidmorningnavigationapp.navigation.ROUTE_ABOUT
-import com.raynaldgitaz.augustmidmorningnavigationapp.navigation.ROUTE_HOME
-import com.raynaldgitaz.augustmidmorningnavigationapp.navigation.ROUTE_SIGNUP
+import com.raynaldgitaz.augustmidmorningnavigationapp.data.ProductRepository
 import com.raynaldgitaz.augustmidmorningnavigationapp.ui.theme.AugustMidMorningNavigationAppTheme
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun AddProductsScreen(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
         var context = LocalContext.current
-        Text(text = "Login here",
+        Text(text = "Add product",
             color = Color.Red,
             fontSize = 30.sp,
             fontFamily = FontFamily.Cursive,
             textDecoration = TextDecoration.Underline,
             fontWeight = FontWeight.Bold)
 
-        var email by remember { mutableStateOf(TextFieldValue("")) }
-        var password by remember { mutableStateOf(TextFieldValue("")) }
+        var productName by remember { mutableStateOf(TextFieldValue("")) }
+        var productQuantity by remember { mutableStateOf(TextFieldValue("")) }
+        var productPrice by remember { mutableStateOf(TextFieldValue("")) }
 
-        OutlinedTextField(value = email,
-            onValueChange = { email = it },
-            label = { Text(text = "Email *")},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+        OutlinedTextField(value = productName,
+            onValueChange = { productName = it },
+            label = { Text(text = "Name *") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        OutlinedTextField(value = password,
-            onValueChange = { password = it },
-            label = { Text(text = "Password")},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+        OutlinedTextField(value = productQuantity,
+            onValueChange = {productQuantity = it },
+            label = { Text(text = "Email *") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+        OutlinedTextField(value = productPrice,
+            onValueChange = { productPrice = it },
+            label = { Text(text = "Password") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(onClick = {
-           // ------WRITE LOGIN LOGIC HERE------//
-            var authRepository = AuthRepository(navController,context)
-            authRepository.login(email.text.trim(),password.text.trim())
+            // ------WRITE SIGNUP LOGIC HERE------//
+
+
+
         }) {
-            Text(text = "Login")
+            Text(text = "Save" )
         }
+
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(onClick = {
-            navController.navigate(ROUTE_SIGNUP)
+            // ------WRITE SAVE LOGIC HERE------//
+            var productRepository = ProductRepository(navController, context)
+            productRepository.saveProduct(productName.text.trim(),productQuantity.text.trim(), productPrice.text)
         }) {
-            Text(text = "No account? Signup" )
+            Text(text = "Save" )
         }
 
     }
 }
-
 @Preview
 @Composable
-fun LoginScreenPreview() {
+fun AddProductsScreenPreview() {
     AugustMidMorningNavigationAppTheme {
-        LoginScreen(rememberNavController())
+        AddProductsScreen(rememberNavController())
     }
 }
-
