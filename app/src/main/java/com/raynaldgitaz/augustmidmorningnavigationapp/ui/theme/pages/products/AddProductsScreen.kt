@@ -51,7 +51,7 @@ fun AddProductsScreen(navController: NavHostController) {
 
         OutlinedTextField(value = productName,
             onValueChange = { productName = it },
-            label = { Text(text = "Name *") },
+            label = { Text(text = "Product name *") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
@@ -59,27 +59,19 @@ fun AddProductsScreen(navController: NavHostController) {
 
         OutlinedTextField(value = productQuantity,
             onValueChange = {productQuantity = it },
-            label = { Text(text = "Email *") },
+            label = { Text(text = "Product quantity *") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
         OutlinedTextField(value = productPrice,
             onValueChange = { productPrice = it },
-            label = { Text(text = "Password") },
+            label = { Text(text = "Product price") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
-
-        Button(onClick = {
-            // ------WRITE SIGNUP LOGIC HERE------//
-
-
-
-        }) {
-            Text(text = "Save" )
-        }
+        
 
         Spacer(modifier = Modifier.height(20.dp))
 
