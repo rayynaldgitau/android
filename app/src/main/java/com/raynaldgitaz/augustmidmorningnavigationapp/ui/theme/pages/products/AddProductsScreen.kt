@@ -71,9 +71,6 @@ fun AddProductsScreen(navController: NavHostController) {
         )
 
         Spacer(modifier = Modifier.height(20.dp))
-        
-
-        Spacer(modifier = Modifier.height(20.dp))
 
         Button(onClick = {
             // ------WRITE SAVE LOGIC HERE------//
